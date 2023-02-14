@@ -33,7 +33,7 @@ void setup() {
 	Serial.begin(115200);
 }
 
-int mode = 0;
+int mode = 1; // set mode on boot
 unsigned long mode_start_millis = millis();
 unsigned long time_per_mode_millis = 600000; // 10 minutes
 const int mode_count = 5;
@@ -42,6 +42,8 @@ void loop() {
 	//long mode = (millis() >> 14) % mode_count; // shift 19 = 10 minutes; shift 14 = 30 seconds
 
 	// check mode and progress
+  // disabled because we only want it in one mode
+  /*
 	if ((millis() - mode_start_millis) > time_per_mode_millis) {
 		mode_start_millis = millis();
 		mode = (mode + 1) % mode_count;
@@ -56,6 +58,7 @@ void loop() {
 			delay(200);
 		}
 	}
+ */
 
 	// check button read (either of them pulled low by press?)
 	if ((! digitalRead(PIN_SW_1)) || (! digitalRead(PIN_SW_2))) {
